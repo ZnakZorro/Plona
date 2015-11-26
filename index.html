@@ -11,9 +11,9 @@
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAD/AAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAAAAAAAAAAAAP0AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA8QAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADvAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAPMAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAnwAAAP8AAAC/AAAAAAAAAP8AAAB/AAAAtwAAAP8AAAD/AAAAnwAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAJ8AAAD/AAAAvwAAAAAAAAD/AAAAwwAAAIsAAAD/AAAA1wAAAEsAAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAL8AAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAnwAAAP8AAAC/AAAAAAAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAJ8AAAD/AAAAvwAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAO8AAAAAAAAA/wAAAPMAAACfAAAAnwAAAP8AAACfAAAA/wAAAPMAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAALEAAAAAAAAA4wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAKEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAz/MAAM/zAAAAAAAAAAAAADi+AAA4oAAAOIIAADi+AAA4gAAAOL4AADiAAAAAAAAAgAEAAP//AAD//wAA//8AAA==" />
 <link rel="stylesheet" href="klawisze-ciemne.css">
 <style>
-body {font-size:15px;font-family:verdana; margin:0.5rem; background-color:#282E34; color:#fff}
+body {font-size:15px;font-family:verdana; margin:0.5rem; background-color:#012; color:#fff}
 h2 span{color:#ddd;}
-#info {margin:0.3rem 0; padding:0.3rem 1rem; min-height:1.5rem; border:1px solid #000; background-color:#888;} 
+#info {margin:0.3rem 0; padding:0.3rem 1rem; min-height:1.5rem; border:1px solid #000; background-color:#444;} 
 .div_klawiszy {margin-top:1rem;}
 #mpc_update	{margin:1em 2em; padding:1em;background:white; color:black;font-family: monospace;font-size: 12px;}
 #config_input {width:15.5em;}
@@ -22,10 +22,12 @@ input {font-size:1.2em; padding:4px;margin:4px;}
 @media screen and (max-width: 570px) {
 	#info {min-height:2.25rem;}
 	button {width: 6rem;}
+	button,button.admin {max-width:initial; min-width:initial; width: 192px; height:36px; margin:8px; padding:3px 5px;}
+	
 }		
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 390px) {
 	#info {min-height:3.25rem;}
-	button,button.admin {max-width:initial; min-width:initial; width: 132px; height:36px; margin:5px 8px; padding:0 5px;}
+	button,button.admin {max-width:initial; min-width:initial; width: 132px; height:36px; margin:6px 8px; padding:0 3px;}
 	button.right{margin-right:0.5em;}
 }   
 </style>
@@ -92,7 +94,7 @@ var radios =
         "stream": "http://streaming.radionomy.com/Sax4Love"
     },
     {
-        "title": "Jazz Audio-phile",
+        "title": "Jazz Audio",
         "stream": "http://50.7.173.162:8014/"
     },
     {
@@ -100,7 +102,7 @@ var radios =
         "stream": "http://50.7.173.162:8012/"
     },
     {
-        "title": "The-smooth-lounge",
+        "title": "The smooth lounge",
         "stream": "http://listen.radionomy.com/the-smooth-lounge"
     },
     {
