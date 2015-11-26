@@ -3,26 +3,20 @@
 <head>
 
 <meta charset="UTF-8">
-<<<<<<< HEAD
-	<title>Plony</title>
-=======
-	<title>intRadio nodeJS</title>
->>>>>>> add config ang logo
+
+	<title>Plona</title>
+
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAD/AAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAAAAAAAAAAAAP0AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA8QAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADvAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAPMAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAnwAAAP8AAAC/AAAAAAAAAP8AAAB/AAAAtwAAAP8AAAD/AAAAnwAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAJ8AAAD/AAAAvwAAAAAAAAD/AAAAwwAAAIsAAAD/AAAA1wAAAEsAAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAL8AAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAnwAAAP8AAAC/AAAAAAAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAJ8AAAD/AAAAvwAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAO8AAAAAAAAA/wAAAPMAAACfAAAAnwAAAP8AAACfAAAA/wAAAPMAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAALEAAAAAAAAA4wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAKEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAz/MAAM/zAAAAAAAAAAAAADi+AAA4oAAAOIIAADi+AAA4gAAAOL4AADiAAAAAAAAAgAEAAP//AAD//wAA//8AAA==" />
 <link rel="stylesheet" href="klawisze-ciemne.css">
 <style>
-	body {font-size:15px;font-family:verdana; margin:0.5rem; background-color:#282E34; color:#fff}
-	h2 span{color:#ddd;}
-	
-	#info {margin:0.3rem 0; padding:0.3rem 1rem; min-height:1.5rem; border:1px solid #000; background-color:#888;} 
-	
-
+body {font-size:15px;font-family:verdana; margin:0.5rem; background-color:#282E34; color:#fff}
+h2 span{color:#ddd;}
+#info {margin:0.3rem 0; padding:0.3rem 1rem; min-height:1.5rem; border:1px solid #000; background-color:#888;} 
 .div_klawiszy {margin-top:1rem;}
 #mpc_update	{margin:1em 2em; padding:1em;background:white; color:black;font-family: monospace;font-size: 12px;}
 #config_input {width:15.5em;}
-
-
 input {font-size:1.2em; padding:4px;margin:4px;}
 	
 @media screen and (max-width: 570px) {
@@ -31,10 +25,9 @@ input {font-size:1.2em; padding:4px;margin:4px;}
 }		
 @media screen and (max-width: 320px) {
 	#info {min-height:3.25rem;}
-	button,button.admin {max-width:initial; min-width:initial; width: 132px; height:36px; margin:4px 6px; padding:0 5px;}
+	button,button.admin {max-width:initial; min-width:initial; width: 132px; height:36px; margin:5px 8px; padding:0 5px;}
 	button.right{margin-right:0.5em;}
 }   
- 
 </style>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script>
@@ -139,47 +132,7 @@ var radios =
         "stream": "http://mp3.polskieradio.pl:8020"
     }
 ];
-</script>
 
-<script>
-
-	function onDeviceReady() {
-
-		odczytajConfig();
-		readRadios();
-		if (localStorage.getItem("___pi___radio")) wybraneRadio = localStorage.getItem("___pi___radio");
-			
-			// Events for klawisze bash
-			[].forEach.call(document.querySelectorAll('button.bash'), function(el) {
-				el.addEventListener('click', function() {
-					sendBashCommand(this);
-				})
-			})			
-			document.getElementById('klawiszON').addEventListener('click', radioOn, false);
-			document.getElementById('klawiszOFF').addEventListener('click', radioOn, false);
-			ustawActive();
-			getInfo();
-			ustawDevices();
-			//console.log('wybranyKomputer =',config[wybranyKomputer]['title']);
-			//document.getElementById('wybranyKomputer').innerHTML = config[wybranyKomputer]['title'];
-	}	// Dom ready
-	
-
-   function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
-
-		try {if (device.uuid) {console.log(device.uuid);}	}
-		catch(err) {onDeviceReady();}
-		
-	}
-	
-	
-	
-</script>
-
-
-
-<script>
 var config=[
 {
 	"title":"Orange",
@@ -197,22 +150,49 @@ var config=[
 }
 ]
 var wybranyKomputer = 0;
-
 var wybraneRadio=1;
+
+	// DOM READY
+	function onDeviceReady() {
+		odczytajConfig();
+		readRadios();
+		if (localStorage.getItem("___pi___radio")) wybraneRadio = localStorage.getItem("___pi___radio");
+			
+			// Events for klawisze bash
+			[].forEach.call(document.querySelectorAll('button.bash'), function(el) {
+				el.addEventListener('click', function() {
+					sendBashCommand(this);
+				})
+			})			
+			document.getElementById('klawiszON').addEventListener('click', radioOn, false);
+			document.getElementById('klawiszOFF').addEventListener('click', radioOn, false);
+			ustawActive();
+			getInfo();
+			ustawDevices();
+	}	// Dom ready
+	
+
+   function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+		try {if (device.uuid) {console.log(device.uuid);}	}
+		catch(err) {onDeviceReady();}
+		
+	}
 
 
 	function readRadios(){
-				var klawisze = document.getElementById('klawisze');
-				// Events for klawisze radia
-				for (var a in radios){
-					var klaw = document.createElement('button');
-						klaw.innerHTML=radios[a]['title'];
-						klaw.setAttribute('data-radio',parseInt(a)+1); 
-						klaw.addEventListener('click', radioOn, false); 
-					klawisze.appendChild(klaw);	
-				}
-				dajInfoRadio('radio='+wybraneRadio);
-				document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];
+		var klawisze = document.getElementById('klawisze');
+		// Events for klawisze radia
+		for (var a in radios){
+			var klaw = document.createElement('button');
+				klaw.innerHTML=radios[a]['title'];
+				klaw.setAttribute('data-radio',parseInt(a)+1); 
+				klaw.addEventListener('click', radioOn, false); 
+			klawisze.appendChild(klaw);	
+		}
+		dajInfoRadio('radio='+wybraneRadio);
+		document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];
 	}
 
 
@@ -223,13 +203,10 @@ var wybraneRadio=1;
 			var protokol = config[wybranyKomputer]['protokol'];
 			var ip = config[wybranyKomputer]['ip'];
 			var port = ':'+config[wybranyKomputer]['port'];
-			//console.log(protokol,ip,port)
 			r.open("GET", protokol+ip+port+"/?"+param, true);
-			//r.open("GET", "http://192.168.1.105:1956/?"+param, true);
 			r.onreadystatechange = function () {
 			if (r.readyState != 4 || r.status != 200) return;
 				var info = JSON.parse(r.responseText);
-				console.log(info.wiadomosc);
 				var wpis='';
 				if (info.wiadomosc && opisz==true) wpis += info.wiadomosc; //undefined
 				document.getElementById('info').innerHTML = wpis;// +' '+ screen.width+'x'+screen.height;
@@ -240,7 +217,7 @@ var wybraneRadio=1;
 			console.log(error);
 		}
 		finally {
-			//console.log('finally');
+			console.log('daj info finally');
 		}
 	}
 
@@ -258,14 +235,12 @@ var wybraneRadio=1;
 	// włącz radio wg numeru
 	function radioOn(){
 		wybraneRadio = this.dataset.radio;	
-		//console.log(wybraneRadio,radios[parseInt(wybraneRadio)-1]['title']);
 		//wybraneRadio= -1 wyłącz; 999 wlącz ostatnie
 		document.getElementById('info').innerHTML = '';
 		dajInfoRadio('radio='+wybraneRadio,false);
 		setTimeout(function(){dajInfoRadio('info=radio',true);},8000);
 		localStorage.setItem("___pi___radio",wybraneRadio);
-		document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];
-		
+		document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];		
 		ustawActive();
 	}
 	
@@ -275,14 +250,11 @@ var wybraneRadio=1;
 		console.log(bash);
 		dajInfoRadio('bash='+bash,false);
 	}
-	// DOM READY
-	//document.addEventListener('DOMContentLoaded', function() {
 
 	
 // po kliknieciu w klawisz
 function wybierzDev(d){
 	wybranyKomputer = d;
-	//console.log(config[wybranyKomputer]);
 	ustawDevices();
 	localStorage.setItem("___radio___config", JSON.stringify(config));
 }
@@ -338,8 +310,6 @@ function zapiszConfig(){
 	}
 	var zapisTXT = JSON.stringify(config);
 	localStorage.setItem("___radio___config", zapisTXT);	
-	//console.log(config);
-	//console.log(zapisTXT);	
 }
 
 
@@ -361,7 +331,6 @@ function configUpdate(){
 	var conf = config[0];
 	config_update.insertAdjacentHTML('beforeend',"<button onClick='zapiszConfig()'>Zapisz config</button>");
 	config_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick=\'document.getElementById("config_update").style.display="none";\'>X</button>');
-
 }	
 	
 </script>
@@ -380,7 +349,6 @@ function configUpdate(){
 		<button data-radio="999"  id="klawiszON"  class="plus">Włącz radio ON</button>
 		<button data-radio="-1"   id="klawiszOFF" class="plus">Wyłącz radio OFF</button>
 	</div>
-
 	
 	<div class="div_klawiszy">
 		<!--http://www.computerhope.com/unix/ushutdow.htm-->
@@ -395,6 +363,6 @@ function configUpdate(){
 		<div id="config_update" style="display:none;"></div>
 		<div id="mpc_update" style="display:none;"></div>
 	</div>
-<br /><br /><br /><br />
+<br /><br /><br />
 </body>
 </html>

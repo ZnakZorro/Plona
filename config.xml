@@ -6,10 +6,10 @@
         version   = "1.0.0">
 
 
-    <name>ZnakZorro-Plony</name>
+    <name>Plona</name>
 
     <description>
-        Plony powered by PhoneGap 
+        Plona powered by PhoneGap 
     </description>
 
     <author href="http://zszczech.zut.edu.pl/git" email="zs@g.pl">
