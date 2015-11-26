@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="pl">
+<head>
+
+<meta charset="UTF-8">
+<<<<<<< HEAD
+	<title>Plony</title>
+=======
+	<title>intRadio nodeJS</title>
+>>>>>>> add config ang logo
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAD/AAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAAAAAAAAAAAAP0AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA8QAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADvAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAPMAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAnwAAAP8AAAC/AAAAAAAAAP8AAAB/AAAAtwAAAP8AAAD/AAAAnwAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAJ8AAAD/AAAAvwAAAAAAAAD/AAAAwwAAAIsAAAD/AAAA1wAAAEsAAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAL8AAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAnwAAAP8AAAC/AAAAAAAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAJ8AAAD/AAAAvwAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAO8AAAAAAAAA/wAAAPMAAACfAAAAnwAAAP8AAACfAAAA/wAAAPMAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAALEAAAAAAAAA4wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAKEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAz/MAAM/zAAAAAAAAAAAAADi+AAA4oAAAOIIAADi+AAA4gAAAOL4AADiAAAAAAAAAgAEAAP//AAD//wAA//8AAA==" />
+<link rel="stylesheet" href="klawisze-ciemne.css">
+<style>
+	body {font-size:15px;font-family:verdana; margin:0.5rem; background-color:#282E34; color:#fff}
+	h2 span{color:#ddd;}
+	
+	#info {margin:0.3rem 0; padding:0.3rem 1rem; min-height:1.5rem; border:1px solid #000; background-color:#888;} 
+	
+
+.div_klawiszy {margin-top:1rem;}
+#mpc_update	{margin:1em 2em; padding:1em;background:white; color:black;font-family: monospace;font-size: 12px;}
+#config_input {width:15.5em;}
+
+
+input {font-size:1.2em; padding:4px;margin:4px;}
+	
+@media screen and (max-width: 570px) {
+	#info {min-height:2.25rem;}
+	button {width: 6rem;}
+}		
+@media screen and (max-width: 320px) {
+	#info {min-height:3.25rem;}
+	button,button.admin {max-width:initial; min-width:initial; width: 132px; height:36px; margin:4px 6px; padding:0 5px;}
+	button.right{margin-right:0.5em;}
+}   
+ 
+</style>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script>
+var radios = 
+[
+    {
+        "title": "TOK FM",
+        "stream": "http://poznan5-1.radio.pionier.net.pl:8000/radiotok.ogg",
+        "stream2": "http://poznan5-1.radio.pionier.net.pl:8000/radiotok.ogg"
+    },
+    {
+        "title": "RMF Classic",
+        "stream": "http://31.192.216.5:8000/rmf_classic"
+    },
+    {
+        "title": "Jazz Ballads",
+        "stream": "http://pub6.jazzradio.com:80/jr_jazzballads_aacplus?d1e1bfa0a67fafc4764954be"
+    },
+    {
+        "title": "Piano Trios",
+        "stream": "http://pub1.jazzradio.com:80/jr_pianotrios_aacplus?d1e1bfa0a67fafc4764954be"
+    },
+    {
+        "title": "Vocal Legend",
+        "stream": "http://pub1.jazzradio.com:80/jr_vocallegends_aacplus?d1e1bfa0a67fafc4764954be"
+    },
+    {
+        "title": "Gypsy Jazz",
+        "stream": "http://pub1.jazzradio.com:80/jr_gypsyjazz?d1e1bfa0a67fafc4764954be"
+    },
+    {
+        "title": "Guitar Jazz",
+        "stream": "http://pub6.jazzradio.com:80/jr_guitarjazz?d1e1bfa0a67fafc4764954be"
+    },
+    {
+        "title": "Guitar Acoustic",
+        "stream": "http://streaming.radionomy.com/Acoustic-Guitar"
+    },
+    {
+        "title": "PR-1 Jedynka",
+        "stream": "mms://stream.polskieradio.pl/program1"
+    },
+    {
+        "title": "PR-2 Dwójka",
+        "stream": "mms://stream.polskieradio.pl/program2"
+    },
+    {
+        "title": "PR-3 Trójka",
+        "stream": "mms://stream.polskieradio.pl/program3"
+    },
+    {
+        "title": "PR-4 Czwórka",
+        "stream": "mms://stream.polskieradio.pl/program4"
+    },
+    {
+        "title": "Szczecin Radio",
+        "stream": "http://stream4.nadaje.com:11986/prs.aac"
+    },
+
+    {
+        "title": "Sax4Love",
+        "stream": "http://streaming.radionomy.com/Sax4Love"
+    },
+    {
+        "title": "Jazz Audio-phile",
+        "stream": "http://50.7.173.162:8014/"
+    },
+    {
+        "title": "Audiophile Classical",
+        "stream": "http://50.7.173.162:8012/"
+    },
+    {
+        "title": "The-smooth-lounge",
+        "stream": "http://listen.radionomy.com/the-smooth-lounge"
+    },
+    {
+        "title": "Złote Przeboje",
+        "stream": "http://mainstream.radioagora.pl/tuba9-1.mp3"
+    },
+    {
+        "title": "PL - Smooth Jazz",
+        "stream": "http://178.32.161.112:5700"
+    },
+    {
+        "title": "PL - JAZZ",
+        "stream": "http://91.121.92.167:8700"
+    },
+    {
+        "title": "PL - Klasycznie",
+        "stream": "http://91.121.92.167:8900"
+    },
+    {
+        "title": "Niezapomniane PL",
+        "stream": "http://178.32.161.112:9100"
+    },
+    {
+        "title": "Najwieksze PL 80 90",
+        "stream": "http://178.32.161.113:9200"
+    },
+    {
+        "title": "Najpiękniejsze PL",
+        "stream": "http://mp3.polskieradio.pl:8020"
+    }
+];
+</script>
+
+<script>
+
+	function onDeviceReady() {
+
+		odczytajConfig();
+		readRadios();
+		if (localStorage.getItem("___pi___radio")) wybraneRadio = localStorage.getItem("___pi___radio");
+			
+			// Events for klawisze bash
+			[].forEach.call(document.querySelectorAll('button.bash'), function(el) {
+				el.addEventListener('click', function() {
+					sendBashCommand(this);
+				})
+			})			
+			document.getElementById('klawiszON').addEventListener('click', radioOn, false);
+			document.getElementById('klawiszOFF').addEventListener('click', radioOn, false);
+			ustawActive();
+			getInfo();
+			ustawDevices();
+			//console.log('wybranyKomputer =',config[wybranyKomputer]['title']);
+			//document.getElementById('wybranyKomputer').innerHTML = config[wybranyKomputer]['title'];
+	}	// Dom ready
+	
+
+   function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+		try {if (device.uuid) {console.log(device.uuid);}	}
+		catch(err) {onDeviceReady();}
+		
+	}
+	
+	
+	
+</script>
+
+
+
+<script>
+var config=[
+{
+	"title":"Orange",
+	"protokol":"http://",
+	"ip":"192.168.1.105",
+	"port":"1956",
+	"class":"active"
+},
+{
+	"title":"Malina",
+	"protokol":"http://",
+	"ip":"192.168.1.112",
+	"port":"1956",
+	"class":""
+}
+]
+var wybranyKomputer = 0;
+
+var wybraneRadio=1;
+
+
+	function readRadios(){
+				var klawisze = document.getElementById('klawisze');
+				// Events for klawisze radia
+				for (var a in radios){
+					var klaw = document.createElement('button');
+						klaw.innerHTML=radios[a]['title'];
+						klaw.setAttribute('data-radio',parseInt(a)+1); 
+						klaw.addEventListener('click', radioOn, false); 
+					klawisze.appendChild(klaw);	
+				}
+				dajInfoRadio('radio='+wybraneRadio);
+				document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];
+	}
+
+
+
+	function dajInfoRadio(param,opisz){
+		try {
+			var r = new XMLHttpRequest();
+			var protokol = config[wybranyKomputer]['protokol'];
+			var ip = config[wybranyKomputer]['ip'];
+			var port = ':'+config[wybranyKomputer]['port'];
+			//console.log(protokol,ip,port)
+			r.open("GET", protokol+ip+port+"/?"+param, true);
+			//r.open("GET", "http://192.168.1.105:1956/?"+param, true);
+			r.onreadystatechange = function () {
+			if (r.readyState != 4 || r.status != 200) return;
+				var info = JSON.parse(r.responseText);
+				console.log(info.wiadomosc);
+				var wpis='';
+				if (info.wiadomosc && opisz==true) wpis += info.wiadomosc; //undefined
+				document.getElementById('info').innerHTML = wpis;// +' '+ screen.width+'x'+screen.height;
+			};
+			r.send();
+		}
+		catch (error) {
+			console.log(error);
+		}
+		finally {
+			//console.log('finally');
+		}
+	}
+
+	function getInfo(){
+		dajInfoRadio('info=radio',true);
+		setTimeout(function(){getInfo();},10000);
+	}
+	
+	function ustawActive(){
+		[].forEach.call(document.querySelectorAll('#klawisze button'), function(el) {
+			if (el.dataset.radio == wybraneRadio) el.className='active'; else el.className='';
+		});
+	}
+	
+	// włącz radio wg numeru
+	function radioOn(){
+		wybraneRadio = this.dataset.radio;	
+		//console.log(wybraneRadio,radios[parseInt(wybraneRadio)-1]['title']);
+		//wybraneRadio= -1 wyłącz; 999 wlącz ostatnie
+		document.getElementById('info').innerHTML = '';
+		dajInfoRadio('radio='+wybraneRadio,false);
+		setTimeout(function(){dajInfoRadio('info=radio',true);},8000);
+		localStorage.setItem("___pi___radio",wybraneRadio);
+		document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];
+		
+		ustawActive();
+	}
+	
+	function sendBashCommand(ten){
+		var bash = ten.dataset.bash;
+		bash = encodeURIComponent(bash);
+		console.log(bash);
+		dajInfoRadio('bash='+bash,false);
+	}
+	// DOM READY
+	//document.addEventListener('DOMContentLoaded', function() {
+
+	
+// po kliknieciu w klawisz
+function wybierzDev(d){
+	wybranyKomputer = d;
+	//console.log(config[wybranyKomputer]);
+	ustawDevices();
+	localStorage.setItem("___radio___config", JSON.stringify(config));
+}
+	
+function ustawDevices(){
+	var iled = config.length;
+	var devices = document.getElementById('devices');
+	devices.innerHTML='';
+	for (var d in config){
+		var klasa='';
+		if (d==wybranyKomputer) klasa ='active';
+		config[d]['class']=klasa;
+		devices.insertAdjacentHTML('beforeend','<button class="admin '+klasa+'" onClick=wybierzDev("'+d+'")>'+config[d]['title']+'</button>');
+	}
+	document.getElementById('wybranyKomputer').innerHTML = config[wybranyKomputer]['title'];
+}
+
+function mpcUpdate(){
+	var mpc_update = document.getElementById('mpc_update');
+	mpc_update.style.display='block';
+	mpc_update.innerHTML='';
+	mpc_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick=\'document.getElementById("mpc_update").style.display="none";\'>X</button><br />');
+	mpc_update.insertAdjacentHTML('beforeend',"#!/bin/bash<br />");
+	for (var r in radios){
+		mpc_update.insertAdjacentHTML('beforeend',"mpc add "+radios[r]['stream']+'<br />');
+	}
+	mpc_update.insertAdjacentHTML('beforeend',"<br /><br/>");
+}	
+
+function odczytajConfig(){
+	var odczyt = localStorage.getItem("___radio___config");
+	if (odczyt){
+		config = JSON.parse(odczyt);
+		for(var c in config){
+			if(config[c]['class']=='active') wybranyKomputer = c;
+		}
+	}
+}
+
+function zapiszConfig(){
+	var configs = document.querySelectorAll('div#config_update div');
+	var ilec = configs.length;
+	for (var id=0; id<ilec; id++){
+		var inputy = document.querySelectorAll('div#config'+id+' input');
+		for (var i in inputy){
+			var input = inputy[i];
+			if (typeof(input) == 'object'){
+				var key = (input.id.split('config'+id))[1];
+				var val = input.value;
+				config[id][key]=val;
+			}
+		}	
+	}
+	var zapisTXT = JSON.stringify(config);
+	localStorage.setItem("___radio___config", zapisTXT);	
+	//console.log(config);
+	//console.log(zapisTXT);	
+}
+
+
+function configUpdate(){
+	var config_update = document.getElementById('config_update');	
+	config_update.innerHTML='';
+	config_update.style.display='block';
+	for (var c in config){
+		var conf = config[c];
+		var id = 'config'+c;
+		var newDiv = document.createElement('div');
+			newDiv.id = id
+			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'title"    value="'+conf.title+'"    title="nazwa"    style="width:6em;" />');
+			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'protokol" value="'+conf.protokol+'" title="protokol" style="width:3em;" />');
+			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'ip"       value="'+conf.ip+'"       title="ip"       style="width:8em;" />');
+			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'port"     value="'+conf.port+'"     title="port"     style="width:3em;" />');
+		config_update.appendChild(newDiv);
+	}
+	var conf = config[0];
+	config_update.insertAdjacentHTML('beforeend',"<button onClick='zapiszConfig()'>Zapisz config</button>");
+	config_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick=\'document.getElementById("config_update").style.display="none";\'>X</button>');
+
+}	
+	
+</script>
+</head>
+
+<body onload="onLoad()">
+
+	<h2 style="float:left;"><span style="font-family:Georgia;" id="wybranyKomputer">iR</span> PiRadio :: <span id="wybrane"></span></h2>
+	<div style="float:right;" id="devices"></div>
+	<div style="clear:both"></div>
+	
+	<div id="info"></div>
+	<div id="klawisze"></div>
+	
+	<div class="div_klawiszy">
+		<button data-radio="999"  id="klawiszON"  class="plus">Włącz radio ON</button>
+		<button data-radio="-1"   id="klawiszOFF" class="plus">Wyłącz radio OFF</button>
+	</div>
+
+	
+	<div class="div_klawiszy">
+		<!--http://www.computerhope.com/unix/ushutdow.htm-->
+		<button data-bash="shutdown now"  class="bash admin">Shutdown</button>
+		<button data-bash="shutdown -r now" class="bash admin">Reboot</button>
+		<button data-bash="shutdown -P now" class="bash admin">Power off</button>
+	</div>
+	
+	<div class="div_klawiszy">
+		<button class="klaw admin" onClick="mpcUpdate()">MPC update</button>
+		<button class="klaw admin" onClick="configUpdate()">Config</button>
+		<div id="config_update" style="display:none;"></div>
+		<div id="mpc_update" style="display:none;"></div>
+	</div>
+<br /><br /><br /><br />
+</body>
+</html>

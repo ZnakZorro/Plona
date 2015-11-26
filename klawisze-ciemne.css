@@ -1,0 +1,41 @@
+button {
+    color: #eee;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    margin: 10px;
+    padding: 2px 4px;
+    text-align: center;
+    text-decoration: none;
+    /* text-shadow: 1px 1px 1px #6D6D6D; */
+    font: normal 16px/32px Verdana, sans-serif;
+	border-width:1px;
+    border-radius: 12px;
+    /* box-shadow: 1px 1px 1px #000; */
+    /* transition: all 0.15s ease; */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666), color-stop(100%,#222));
+}
+
+button:hover {
+	box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333), color-stop(100%,#666));
+	}
+
+.active {color:#fc6;}	
+button:active {
+    color: #fc6;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#474747), color-stop(100%,#A9A9A9));
+    box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
+}
+
+button:focuse {
+	box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333), color-stop(100%,#666));
+	}
+button:visited {
+	color:black;
+	}
+
+button.right{float:right; margin-right:2em;}
+button.mini{width:2.2em; padding:0;}
+button.admin{background: #666;}

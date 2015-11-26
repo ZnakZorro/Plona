@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.phonegap.plony"
+        versionCode="10" 
+        version   = "1.0.0">
+
+
+    <name>ZnakZorro-Plony</name>
+
+    <description>
+        Plony powered by PhoneGap 
+    </description>
+
+    <author href="http://zszczech.zut.edu.pl/git" email="zs@g.pl">
+        ZnakZorro
+    </author>
+    <preference name="phonegap-version" value="3.3.0" />
+    <preference name="orientation"      value="default" />
+    <preference name="target-device"    value="universal" />
+    <preference name="fullscreen"       value="true" />
+	
+<icon src="plony.png" />
+<icon src="plony.png" gap:platform="android" gap:density="ldpi" />
+<icon src="plony.png" gap:platform="android" gap:density="mdpi" />
+<icon src="plony.png" gap:platform="android" gap:density="hdpi" />
+<icon src="plony.png" gap:platform="android" gap:density="xhdpi" />
+    <gap:splash src="plony.png"  gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="plony.png"  gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="plony.png"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="plony.png" gap:platform="android" gap:density="xhdpi" />
+
+
+
+
+<access origin="*" onlyInBrowser="true" />
+<preference name="stay-in-webview" value="false" />
+	
+
+</widget>
