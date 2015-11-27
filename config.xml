@@ -20,11 +20,16 @@
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="true" />
 	
-<icon src="plony.png" />
-<icon src="plony.png" gap:platform="android" gap:density="ldpi" />
-<icon src="plony.png" gap:platform="android" gap:density="mdpi" />
-<icon src="plony.png" gap:platform="android" gap:density="hdpi" />
-<icon src="plony.png" gap:platform="android" gap:density="xhdpi" />
+<access origin="*" />
+<allow-intent href="*" />
+<allow-navigation href="*" />	
+<access origin="*" launch-external="yes" />
+	
+		<icon src="plony.png" />
+		<icon src="plony.png" gap:platform="android" gap:density="ldpi" />
+		<icon src="plony.png" gap:platform="android" gap:density="mdpi" />
+		<icon src="plony.png" gap:platform="android" gap:density="hdpi" />
+		<icon src="plony.png" gap:platform="android" gap:density="xhdpi" />
     <gap:splash src="plony.png"  gap:platform="android" gap:density="ldpi" />
     <gap:splash src="plony.png"  gap:platform="android" gap:density="mdpi" />
     <gap:splash src="plony.png"  gap:platform="android" gap:density="hdpi" />

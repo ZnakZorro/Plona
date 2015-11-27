@@ -19,7 +19,7 @@ div.configs {display:block;}
 @media screen and (max-width: 570px) {
 	#info {min-height:2.25rem;}
 	button {width: 6rem;}
-	button,button.admin {max-width:initial; min-width:initial; width: 192px; height:36px; margin:8px; padding:3px 5px;}
+	button,button.admin {max-width:initial; min-width:initial; width: 153px; height:36px; margin:6px 8px; padding:0 2px;}
 	
 }		
 @media screen and (max-width: 390px) {
@@ -207,7 +207,7 @@ var wybraneRadio=1;
 	}
 
 
-	// AJAX main
+	// AJAX main AJAX main AJAX main AJAX main AJAX main
 	function dajInfoRadio(param,opisz){
 		try {
 			var r = new XMLHttpRequest();
@@ -216,6 +216,7 @@ var wybraneRadio=1;
 			var port = ':'+config[wybranyKomputer]['port'];
 			r.open("GET", protokol+ip+port+"/?"+param, true);
 			r.onreadystatechange = function () {
+			document.getElementById('debug').innerHTML = r.status;
 			if (r.readyState != 4 || r.status != 200) return;
 				console.log(r.responseText);
 				document.getElementById('debug').innerHTML = r.responseText;
