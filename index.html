@@ -1,13 +1,9 @@
 <!doctype html>
 <html lang="pl">
 <head>
-
 <meta charset="UTF-8">
-
-	<title>Plona</title>
-
-
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plona</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAD/AAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAAAAAAAAAAAAP0AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA8QAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADvAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAPMAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAnwAAAP8AAAC/AAAAAAAAAP8AAAB/AAAAtwAAAP8AAAD/AAAAnwAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAJ8AAAD/AAAAvwAAAAAAAAD/AAAAwwAAAIsAAAD/AAAA1wAAAEsAAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAL8AAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAnwAAAP8AAAC/AAAAAAAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAJ8AAAD/AAAAvwAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAO8AAAAAAAAA/wAAAPMAAACfAAAAnwAAAP8AAACfAAAA/wAAAPMAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAALEAAAAAAAAA4wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAKEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAz/MAAM/zAAAAAAAAAAAAADi+AAA4oAAAOIIAADi+AAA4gAAAOL4AADiAAAAAAAAAgAEAAP//AAD//wAA//8AAA==" />
 <link rel="stylesheet" href="klawisze-ciemne.css">
 <style>
@@ -18,6 +14,7 @@ h2 span{color:#ddd;}
 #mpc_update	{margin:1em 2em; padding:1em;background:white; color:black;font-family: monospace;font-size: 12px;}
 #config_input {width:15.5em;}
 input {font-size:1.2em; padding:4px;margin:4px;}
+div.configs {display:block;}
 	
 @media screen and (max-width: 570px) {
 	#info {min-height:2.25rem;}
@@ -27,7 +24,7 @@ input {font-size:1.2em; padding:4px;margin:4px;}
 }		
 @media screen and (max-width: 390px) {
 	#info {min-height:3.25rem;}
-	button,button.admin {max-width:initial; min-width:initial; width: 132px; height:36px; margin:6px 8px; padding:0 3px;}
+	button,button.admin {max-width:initial; min-width:initial; width: 133px; height:36px; margin:6px 8px; padding:0 2px;}
 	button.right{margin-right:0.5em;}
 }   
 </style>
@@ -94,15 +91,15 @@ var radios =
         "stream": "http://streaming.radionomy.com/Sax4Love"
     },
     {
-        "title": "Jazz Audio",
+        "title": "Jazz APh",
         "stream": "http://50.7.173.162:8014/"
     },
     {
-        "title": "Audiophile Classical",
+        "title": "Classical APh",
         "stream": "http://50.7.173.162:8012/"
     },
     {
-        "title": "The smooth lounge",
+        "title": "Smooth lounge",
         "stream": "http://listen.radionomy.com/the-smooth-lounge"
     },
     {
@@ -110,7 +107,7 @@ var radios =
         "stream": "http://mainstream.radioagora.pl/tuba9-1.mp3"
     },
     {
-        "title": "PL - Smooth Jazz",
+        "title": "PL-Smooth Jazz",
         "stream": "http://178.32.161.112:5700"
     },
     {
@@ -118,19 +115,19 @@ var radios =
         "stream": "http://91.121.92.167:8700"
     },
     {
-        "title": "PL - Klasycznie",
+        "title": "PL-Klasycznie",
         "stream": "http://91.121.92.167:8900"
     },
     {
-        "title": "Niezapomniane PL",
+        "title": "Niezapomniane",
         "stream": "http://178.32.161.112:9100"
     },
     {
-        "title": "Najwieksze PL 80 90",
+        "title": "Najwieksze 80",
         "stream": "http://178.32.161.113:9200"
     },
     {
-        "title": "Najpiękniejsze PL",
+        "title": "Najpiękniejsze",
         "stream": "http://mp3.polskieradio.pl:8020"
     }
 ];
@@ -142,11 +139,16 @@ var config=[
 	"ip":"192.168.1.105",
 	"port":"1956",
 	"class":"active"
-},
-{
+},{
 	"title":"Malina",
 	"protokol":"http://",
 	"ip":"192.168.1.112",
+	"port":"1956",
+	"class":""
+},{
+	"title":"Local",
+	"protokol":"http://",
+	"ip":"127.1.1.0",
 	"port":"1956",
 	"class":""
 }
@@ -208,6 +210,8 @@ var wybraneRadio=1;
 			r.open("GET", protokol+ip+port+"/?"+param, true);
 			r.onreadystatechange = function () {
 			if (r.readyState != 4 || r.status != 200) return;
+				console.log(r.responseText);
+				document.getElementById('debug').innerHTML = r.responseText;
 				var info = JSON.parse(r.responseText);
 				var wpis='';
 				if (info.wiadomosc && opisz==true) wpis += info.wiadomosc; //undefined
@@ -219,7 +223,7 @@ var wybraneRadio=1;
 			console.log(error);
 		}
 		finally {
-			console.log('daj info finally');
+			//console.log('daj info finally');
 		}
 	}
 
@@ -236,13 +240,16 @@ var wybraneRadio=1;
 	
 	// włącz radio wg numeru
 	function radioOn(){
-		wybraneRadio = this.dataset.radio;	
-		//wybraneRadio= -1 wyłącz; 999 wlącz ostatnie
+		dataRadio = this.dataset.radio;	
+		var intRadio = parseInt(dataRadio);
 		document.getElementById('info').innerHTML = '';
-		dajInfoRadio('radio='+wybraneRadio,false);
+		dajInfoRadio('radio='+dataRadio,false);
 		setTimeout(function(){dajInfoRadio('info=radio',true);},8000);
+		
+		if(intRadio<0 || intRadio>900) return;
+		wybraneRadio = dataRadio;
 		localStorage.setItem("___pi___radio",wybraneRadio);
-		document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];		
+		document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];
 		ustawActive();
 	}
 	
@@ -323,7 +330,8 @@ function configUpdate(){
 		var conf = config[c];
 		var id = 'config'+c;
 		var newDiv = document.createElement('div');
-			newDiv.id = id
+			newDiv.id = id;
+			newDiv.className="configs";
 			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'title"    value="'+conf.title+'"    title="nazwa"    style="width:6em;" />');
 			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'protokol" value="'+conf.protokol+'" title="protokol" style="width:3em;" />');
 			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'ip"       value="'+conf.ip+'"       title="ip"       style="width:8em;" />');
@@ -365,6 +373,8 @@ function configUpdate(){
 		<div id="config_update" style="display:none;"></div>
 		<div id="mpc_update" style="display:none;"></div>
 	</div>
-<br /><br /><br />
+<br /><br />
+<div id="debug"></div>
+<br />
 </body>
 </html>
