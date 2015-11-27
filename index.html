@@ -220,7 +220,8 @@ var wybraneRadio=1;
 			if (r.readyState != 4 || r.status != 200) return;
 				console.log(r.responseText);
 				document.getElementById('debug').innerHTML = r.responseText;
-				var info = JSON.parse(r.responseText);
+				var info = (JSON.parse(r.responseText));
+				console.log(info);
 				var wpis='';
 				if (info.wiadomosc && opisz==true) wpis += info.wiadomosc; //undefined
 				document.getElementById('info').innerHTML = wpis;// +' '+ screen.width+'x'+screen.height;
@@ -295,6 +296,7 @@ function mpcUpdate(){
 	mpc_update.innerHTML='';
 	mpc_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick=\'document.getElementById("mpc_update").style.display="none";\'>X</button><br />');
 	mpc_update.insertAdjacentHTML('beforeend',"#!/bin/bash<br />");
+	mpc_update.insertAdjacentHTML('beforeend',"mpc clear<br />");
 	for (var r in radios){
 		mpc_update.insertAdjacentHTML('beforeend',"mpc add "+radios[r]['stream']+'<br />');
 	}
@@ -362,7 +364,7 @@ function resetConfig(){
 </head>
 
 <body onload="onLoad()">
-
+<div id="debug"></div>
 	<h2 style="float:left;"><span style="font-family:Georgia;" id="wybranyKomputer">iR</span> PiRadio :: <span id="wybrane"></span></h2>
 	<div style="float:right;" id="devices"></div>
 	<div style="clear:both"></div>
@@ -389,7 +391,7 @@ function resetConfig(){
 		<div id="mpc_update" style="display:none;"></div>
 	</div>
 <br /><br />
-<div id="debug"></div>
+
 <br />
 </body>
 </html>
