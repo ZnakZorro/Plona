@@ -134,30 +134,30 @@ var radios =
 
 var config=[
 {
-	"title":"Orange",
-	"protokol":"http://",
-	"ip":"192.168.1.105",
-	"port":"1956",
-	"class":"active"
-},{
-	"title":"Malina",
-	"protokol":"http://",
-	"ip":"192.168.1.112",
-	"port":"1956",
-	"class":""
-},{
-	"title":"Local",
-	"protokol":"http://",
-	"ip":"127.1.1.0",
-	"port":"1956",
-	"class":""
-},{
-	"title":"WIZUT",
-	"protokol":"http://",
-	"ip":"82.145.72.175",
-	"port":"1956",
-	"class":""
-}
+		"title": "Orange",
+		"protokol": "http://",
+		"ip": "192.168.1.105",
+		"port": "1956",
+		"class": "active"
+	}, {
+		"title": "Malina",
+		"protokol": "http://",
+		"ip": "192.168.1.112",
+		"port": "1956",
+		"class": ""
+	}, {
+		"title": "Local",
+		"protokol": "http://",
+		"ip": "127.1.1.0",
+		"port": "1956",
+		"class": ""
+	}, {
+		"title": "WIZUT",
+		"protokol": "http://",
+		"ip": "82.145.72.175",
+		"port": "1956",
+		"class": ""
+	}
 
 ]
 var wybranyKomputer = 0;
@@ -330,6 +330,7 @@ function zapiszConfig(){
 
 
 function configUpdate(){
+console.log(config);
 	var config_update = document.getElementById('config_update');	
 	config_update.innerHTML='';
 	config_update.style.display='block';
@@ -348,8 +349,14 @@ function configUpdate(){
 	var conf = config[0];
 	config_update.insertAdjacentHTML('beforeend',"<button onClick='zapiszConfig()'>Zapisz config</button>");
 	config_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick=\'document.getElementById("config_update").style.display="none";\'>X</button>');
-}	
+	config_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick="resetConfig()">()</button>');
 	
+}	
+
+function resetConfig(){
+	localStorage.removeItem("___radio___config");
+	location.reload();
+}
 </script>
 </head>
 
