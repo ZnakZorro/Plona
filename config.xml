@@ -24,6 +24,15 @@
 <allow-intent href="*" />
 <allow-navigation href="*" />	
 <access origin="*" launch-external="yes" />
+<access origin="http://zszczech.com.pl" subdomains="true" />
+<access origin="http://192.168.1.105" subdomains="true" />
+<access origin="http://192.168.1.112" subdomains="true" />
+<access origin="http://82.145.72.175" subdomains="true" />
+<access origin="http://127.1.1.0" subdomains="true" />
+
+
+
+
 	
 		<icon src="plony.png" />
 		<icon src="plony.png" gap:platform="android" gap:density="ldpi" />
