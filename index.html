@@ -8,24 +8,31 @@
 <link rel="stylesheet" href="klawisze-ciemne.css">
 <style>
 body {font-size:15px;font-family:verdana; margin:0.5rem; background-color:#00080f; color:#f8f8f8;}
-h2 span{color:#ddd;}
+h3 span{color:#ddd;}
 #info {margin:0.3rem 0; padding:0.3rem 1rem; min-height:1.5rem; border:1px solid #000; background-color:#222;} 
 .div_klawiszy {margin-top:1rem;}
 #mpc_update	{margin:1em 2em; padding:1em;background:white; color:black;font-family: monospace;font-size: 12px;}
 #config_input {width:15.5em;}
 input {font-size:1.2em; padding:4px;margin:4px;}
-div.configs {display:block;}
-	
+div.configs, div#klawisze {clear:both;display:block;}
+button.vol {background:#123; float:left; height:2.3rem;}	
+button.glos {font-size:1.5em; padding:0 1rem;}	
+
 @media screen and (max-width: 570px) {
 	#info {min-height:2.25rem;}
 	button {width: 6rem;}
 	button,button.admin {max-width:initial; min-width:initial; width: 153px; height:36px; margin:6px 8px; padding:0 2px;}
+	button.admin {max-width:initial; min-width:initial; width: initial;}
+	button.vol {width:4.5rem;}
 	
 }		
 @media screen and (max-width: 390px) {
 	#info {min-height:3.25rem;}
 	button,button.admin {max-width:initial; min-width:initial; width: 133px; height:36px; margin:6px 8px; padding:0 2px;}
+	button.admin {max-width:initial; min-width:initial; width: initial;}
 	button.right{margin-right:0.5em;}
+	button.vol {width:3.5rem;}
+
 }   
 </style>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
@@ -161,7 +168,7 @@ var config=[
 
 ]
 var wybranyKomputer = 0;
-var wybraneRadio=1;
+var wybraneRadio=0;
 
 	// DOM READY
 	function onDeviceReady() {
@@ -175,8 +182,11 @@ var wybraneRadio=1;
 					sendBashCommand(this);
 				})
 			})			
-			document.getElementById('klawiszON').addEventListener('click', radioOn, false);
-			document.getElementById('klawiszOFF').addEventListener('click', radioOn, false);
+			//document.getElementById('klawiszON').addEventListener('click', radioOn, false);
+			//document.getElementById('klawiszOFF').addEventListener('click', radioOn, false);
+			//document.getElementById('volumeplus').addEventListener('dajInfoRadio("volume=+10",true)', false);
+			//document.getElementById('volumehalf').addEventListener('dajInfoRadio("volume=50",true)', false);
+			//document.getElementById('volumminus').addEventListener('dajInfoRadio("volume=-10",true)', false);
 			ustawActive();
 			getInfo();
 			ustawDevices();
@@ -202,13 +212,15 @@ var wybraneRadio=1;
 				klaw.addEventListener('click', radioOn, false); 
 			klawisze.appendChild(klaw);	
 		}
-		dajInfoRadio('radio='+wybraneRadio);
-		document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];
+		if (wybraneRadio != 0) dajInfoRadio('radio='+wybraneRadio);
+		
 	}
 
 
 	// AJAX main AJAX main AJAX main AJAX main AJAX main
 	function dajInfoRadio(param,opisz){
+		
+		document.getElementById('debug').innerHTML=param;
 		try {
 			var r = new XMLHttpRequest();
 			var protokol = config[wybranyKomputer]['protokol'];
@@ -218,10 +230,10 @@ var wybraneRadio=1;
 			r.onreadystatechange = function () {
 			document.getElementById('debug').innerHTML = r.status;
 			if (r.readyState != 4 || r.status != 200) return;
-				console.log(r.responseText);
+				//console.log(r.responseText);
 				document.getElementById('debug').innerHTML = r.responseText;
 				var info = (JSON.parse(r.responseText));
-				console.log(info);
+				//console.log(info);
 				var wpis='';
 				if (info.wiadomosc && opisz==true) wpis += info.wiadomosc; //undefined
 				document.getElementById('info').innerHTML = wpis;// +' '+ screen.width+'x'+screen.height;
@@ -234,6 +246,7 @@ var wybraneRadio=1;
 		finally {
 			//console.log('daj info finally');
 		}
+		document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];
 	}
 
 	function getInfo(){
@@ -281,6 +294,7 @@ function ustawDevices(){
 	var iled = config.length;
 	var devices = document.getElementById('devices');
 	devices.innerHTML='';
+//console.log(config);
 	for (var d in config){
 		var klasa='';
 		if (d==wybranyKomputer) klasa ='active';
@@ -364,25 +378,53 @@ function resetConfig(){
 </head>
 
 <body onload="onLoad()">
-<div id="debug"></div>
-	<h2 style="float:left;"><span style="font-family:Georgia;" id="wybranyKomputer">iR</span> PiRadio :: <span id="wybrane"></span></h2>
-	<div style="float:right;" id="devices"></div>
-	<div style="clear:both"></div>
-	
-	<div id="info"></div>
+
+	<h3 style="float:left;"><span style="font-family:Georgia;" id="wybranyKomputer">iR</span> PiRadio :: <span id="wybrane"></span></h3>
+
+	<div style="clear:both; width:100%;">
+		<button class="klaw admin vol glos" onClick="dajInfoRadio('radio=a')"><</button>
+		<button class="klaw admin vol glos" onClick="dajInfoRadio('radio=z')">></button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=0')"><b>Start</b></button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=q')"><b>Stop</b></button>
+
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=b')">25%</button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=c')">50%</button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=d')">75%</button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=e')">90%</button>
+	</div>
+
 	<div id="klawisze"></div>
-	
+<!--	
 	<div class="div_klawiszy">
 		<button data-radio="999"  id="klawiszON"  class="plus">Włącz radio ON</button>
 		<button data-radio="-1"   id="klawiszOFF" class="plus">Wyłącz radio OFF</button>
 	</div>
+	<div class="div_klawiszy">
+		<button data-volume="+10"  id="volumeplus"  class="plus">V+10</button>
+		<button data-volume="50"   id="volumehalf"  class="plus">V 50</button>
+		<button data-volume="-10"  id="volumeminus" class="plus">V-10</button>
+	</div>
 	
 	<div class="div_klawiszy">
-		<!--http://www.computerhope.com/unix/ushutdow.htm-->
+
+		<button data-bash="mpc volume 25" class="bash admin">25%</button>
+		<button data-bash="mpc volume 50" class="bash admin">50%</button>
+		<button data-bash="mpc volume 75" class="bash admin">75%</button>
+		<button data-bash="mpc volume 90" class="bash admin">90%</button>
+		<button data-bash="mpc volume -10" class="bash admin">Ciszej</button>
+		<button data-bash="mpc volume +10"  class="bash admin">Głośniej</button>
+		<button data-bash="mpc stop" class="bash admin">Stop</button>
+		<button data-bash="mpc play" class="bash admin">Play</button>
+		
+	</div>
+		<div class="div_klawiszy">
+		
 		<button data-bash="shutdown now"  class="bash admin">Shutdown</button>
 		<button data-bash="shutdown -r now" class="bash admin">Reboot</button>
 		<button data-bash="shutdown -P now" class="bash admin">Power off</button>
 	</div>
+-->
+	<div id="info"></div>
 	
 	<div class="div_klawiszy">
 		<button class="klaw admin" onClick="mpcUpdate()">MPC update</button>
@@ -390,8 +432,10 @@ function resetConfig(){
 		<div id="config_update" style="display:none;"></div>
 		<div id="mpc_update" style="display:none;"></div>
 	</div>
-<br /><br />
-
+<br />
+	<div style="float:right;" id="devices"></div>
+<br />
+<div id="debug"></div>
 <br />
 </body>
 </html>
