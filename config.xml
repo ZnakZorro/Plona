@@ -15,13 +15,23 @@
     <author href="http://zszczech.zut.edu.pl/git" email="zs@g.pl">
         ZnakZorro
     </author>
+	
+<content src="index.html" />
+<plugin name="cordova-plugin-whitelist" version="1" />
+<access origin="*" />
+<allow-intent href="http://*/*" />
+<allow-intent href="https://*/*" />
+<allow-intent href="tel:*" />
+<allow-intent href="sms:*" />
+<allow-intent href="mailto:*" />
+<allow-intent href="geo:*" />	
+	
+	
     <preference name="phonegap-version" value="cli-5.2.0" />
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="true" />
     
-<plugin name="cordova-plugin-whitelist" spec="1" />	
-
 <access origin="*" launch-external="yes" />
 <access origin="http://zszczech.com.pl" subdomains="true" />
 <access origin="http://192.168.1.105" subdomains="true" />
@@ -29,7 +39,7 @@
 <access origin="http://82.145.72.175" subdomains="true" />
 <access origin="http://127.1.1.0" subdomains="true" />
 
-<access origin="*" />
+
 <allow-intent href="*" />
 <allow-navigation href="*" />
 
