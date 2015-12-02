@@ -144,25 +144,25 @@ var config=[
 		"title": "Orange",
 		"protokol": "http://",
 		"ip": "192.168.1.105",
-		"port": "1956",
+		"port": "9615",
 		"class": "active"
 	}, {
 		"title": "Malina",
 		"protokol": "http://",
 		"ip": "192.168.1.112",
-		"port": "1956",
+		"port": "9615",
 		"class": ""
 	}, {
 		"title": "Local",
 		"protokol": "http://",
 		"ip": "127.1.1.0",
-		"port": "1956",
+		"port": "9615",
 		"class": ""
 	}, {
 		"title": "WIZUT",
 		"protokol": "http://",
 		"ip": "82.145.72.175",
-		"port": "1956",
+		"port": "9615",
 		"class": ""
 	}
 
@@ -246,7 +246,7 @@ var wybraneRadio=0;
 		finally {
 			//console.log('daj info finally');
 		}
-		/document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];
+		document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];
 	}
 
 	function getInfo(){
