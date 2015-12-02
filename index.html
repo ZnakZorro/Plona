@@ -246,7 +246,7 @@ var wybraneRadio=0;
 		finally {
 			//console.log('daj info finally');
 		}
-		document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];
+		/document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)-1]['title'];
 	}
 
 	function getInfo(){
@@ -301,7 +301,7 @@ function ustawDevices(){
 		config[d]['class']=klasa;
 		devices.insertAdjacentHTML('beforeend','<button class="admin '+klasa+'" onClick=wybierzDev("'+d+'")>'+config[d]['title']+'</button>');
 	}
-	document.getElementById('wybranyKomputer').innerHTML = config[wybranyKomputer]['title'];
+	//document.getElementById('wybranyKomputer').innerHTML = config[wybranyKomputer]['title'];
 }
 
 function mpcUpdate(){
