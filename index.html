@@ -144,31 +144,31 @@ var config=[
 		"title": "Orange",
 		"protokol": "http://",
 		"ip": "192.168.1.105",
-		"port": "9615",
+		"port": "8080",
 		"class": "active"
 	}, {
 		"title": "Malina",
 		"protokol": "http://",
 		"ip": "192.168.1.112",
-		"port": "9615",
+		"port": "8080",
 		"class": ""
 	}, {
 		"title": "Local",
 		"protokol": "http://",
 		"ip": "127.1.1.0",
-		"port": "9615",
+		"port": "8080",
 		"class": ""
 	}, {
 		"title": "webWI",
 		"protokol": "http://",
 		"ip": "82.145.71.139",
-		"port": "9615",
+		"port": "8080",
 		"class": ""
 	}, {
 		"title": "WIZUT",
 		"protokol": "http://",
 		"ip": "82.145.72.175",
-		"port": "9615",
+		"port": "8080",
 		"class": ""
 	}
 
@@ -388,15 +388,16 @@ function resetConfig(){
 	<h3 style="float:left;"><span style="font-family:Georgia;" id="wybranyKomputer">iR</span> PiRadio :: <span id="wybrane"></span></h3>
 
 	<div style="clear:both; width:100%;">
-		<button class="klaw admin vol glos" onClick="dajInfoRadio('radio=a')"><</button>
-		<button class="klaw admin vol glos" onClick="dajInfoRadio('radio=z')">></button>
+		<button class="klaw admin vol glos" onClick="dajInfoRadio('radio=v-10')"><</button>
+		<button class="klaw admin vol glos" onClick="dajInfoRadio('radio=v+10')">></button>
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=0')"><b>Start</b></button>
-		<button class="klaw admin vol" onClick="dajInfoRadio('radio=q')"><b>Stop</b></button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v0')"><b>Stop</b></button>
 
-		<button class="klaw admin vol" onClick="dajInfoRadio('radio=b')">25%</button>
-		<button class="klaw admin vol" onClick="dajInfoRadio('radio=c')">50%</button>
-		<button class="klaw admin vol" onClick="dajInfoRadio('radio=d')">75%</button>
-		<button class="klaw admin vol" onClick="dajInfoRadio('radio=e')">90%</button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v15')">15%</button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v25')">25%</button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v50')">50%</button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v75')">75%</button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v90')">90%</button>
 	</div>
 
 	<div id="klawisze"></div>
