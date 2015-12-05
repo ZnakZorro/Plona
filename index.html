@@ -17,6 +17,49 @@ input {font-size:1.2em; padding:4px;margin:4px;}
 div.configs, div#klawisze {clear:both;display:block;}
 button.vol {background:#123; float:left; height:2.3rem;}	
 button.glos {font-size:1.5em; padding:0 1rem;}	
+#VolSlider {width:99%; clear:both; margin:0.5em 0 1em 0;}
+
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 99%;
+  background: transparent;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #69b;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 18px;
+  border-radius: 3px;
+  background: #369;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #036;
+}
+
+
+
+
+
+
+
 
 @media screen and (max-width: 570px) {
 	#info {min-height:2.25rem;}
@@ -196,6 +239,9 @@ var wybraneRadio=0;
 			ustawActive();
 			getInfo();
 			ustawDevices();
+			var vol=25;
+			document.getElementById("VolSlider").value=vol;
+			document.getElementById("VolVal").innerHTML=vol;
 	}	// Dom ready
 	
 
@@ -373,12 +419,26 @@ console.log(config);
 	config_update.insertAdjacentHTML('beforeend',"<button onClick='zapiszConfig()'>Zapisz config</button>");
 	config_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick=\'document.getElementById("config_update").style.display="none";\'>X</button>');
 	config_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick="resetConfig()">()</button>');
-	
+	document.getElementById('config_update').style.display='none';
 }	
 
 function resetConfig(){
 	localStorage.removeItem("___radio___config");
 	location.reload();
+}
+
+
+function ustawVol(ten){
+	//ten = 	document.getElementById("VolSlider").innerHTML=vol;
+	var vol = Math.round(ten.value);
+	//console.log(vol);
+	dajInfoRadio('radio=v'+vol);
+	document.getElementById("VolVal").innerHTML=vol;
+	//var VolSlider = document.getElementById("VolSlider");
+	//var x = document.getElementById("VolSlider").value;
+	//console.log(ten.value,VolSlider.value,x)
+	//document.getElementById("VolSlider").stepDown(10);
+	//document.getElementById("VolSlider").stepUp(10);
 }
 </script>
 </head>
@@ -388,8 +448,8 @@ function resetConfig(){
 	<h3 style="float:left;"><span style="font-family:Georgia;" id="wybranyKomputer">iR</span> PiRadio :: <span id="wybrane"></span></h3>
 
 	<div style="clear:both; width:100%;">
-		<button class="klaw admin vol glos" onClick="dajInfoRadio('radio=v-10')"><</button>
-		<button class="klaw admin vol glos" onClick="dajInfoRadio('radio=v+10')">></button>
+		<button class="klaw admin vol glos" onClick="document.getElementById('VolSlider').stepDown(1);dajInfoRadio('radio=v-10')"><</button>
+		<button class="klaw admin vol glos" onClick="document.getElementById('VolSlider').stepUp(1);dajInfoRadio('radio=v+10')">></button>
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=0')"><b>Start</b></button>
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v0')"><b>Stop</b></button>
 
@@ -399,7 +459,11 @@ function resetConfig(){
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v75')">75%</button>
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v90')">90%</button>
 	</div>
-
+	
+	<div style="clear:both; width:100%;">
+		<p class="note">Volume: <span id="VolVal">0</span>%</p>
+		<input id="VolSlider" type="range" min="0" max="100" step="2.5" defaultValue="25" onChange="ustawVol(this)" />
+	</div>
 	<div id="klawisze"></div>
 <!--	
 	<div class="div_klawiszy">
