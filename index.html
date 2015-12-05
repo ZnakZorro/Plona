@@ -9,7 +9,7 @@
 <style>
 body {font-size:15px;font-family:verdana; margin:0.5rem; background-color:#00080f; color:#f8f8f8;}
 h3 span{color:#ddd;}
-#info {margin:0.3rem 0; padding:0.3rem 1rem; min-height:1.5rem; border:1px solid #000; background-color:#222;} 
+#info_wiadomosc {margin:0.3rem 0; padding:0.3rem 1rem; min-height:1.5rem; border:1px solid #000; background-color:#222;} 
 .div_klawiszy {margin-top:1rem;}
 #mpc_update	{margin:1em 2em; padding:1em;background:white; color:black;font-family: monospace;font-size: 12px;}
 #config_input {width:15.5em;}
@@ -24,7 +24,7 @@ input[type=range] {
   -webkit-appearance: none;
   margin: 18px 0;
   width: 99%;
-  background: transparent;
+  background: #444;
 }
 input[type=range]:focus {
   outline: none;
@@ -62,7 +62,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 
 @media screen and (max-width: 570px) {
-	#info {min-height:2.25rem;}
+	#info_wiadomosc {min-height:2.25rem;}
 	button {width: 6rem;}
 	button,button.admin {max-width:initial; min-width:initial; width: 153px; height:36px; margin:6px 8px; padding:0 2px;}
 	button.admin {max-width:initial; min-width:initial; width: initial;}
@@ -70,7 +70,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 	
 }		
 @media screen and (max-width: 390px) {
-	#info {min-height:3.25rem;}
+	#info_wiadomosc {min-height:3.25rem;}
 	button,button.admin {max-width:initial; min-width:initial; width: 133px; height:36px; margin:6px 8px; padding:0 2px;}
 	button.admin {max-width:initial; min-width:initial; width: initial;}
 	button.right{margin-right:0.5em;}
@@ -222,7 +222,7 @@ var wybraneRadio=0;
 	// DOM READY
 	function onDeviceReady() {
 		odczytajConfig();
-		readRadios();
+		wpiszKlawiszeRadios();
 		if (localStorage.getItem("___pi___radio")) wybraneRadio = localStorage.getItem("___pi___radio");
 			
 			// Events for klawisze bash
@@ -254,8 +254,9 @@ var wybraneRadio=0;
 	}
 
 
-	function readRadios(){
+	function wpiszKlawiszeRadios(){
 		var klawisze = document.getElementById('klawisze');
+		klawisze.innerHTML='';
 		// Events for klawisze radia
 		for (var a in radios){
 			var klaw = document.createElement('button');
@@ -264,12 +265,27 @@ var wybraneRadio=0;
 				klaw.addEventListener('click', radioOn, false); 
 			klawisze.appendChild(klaw);	
 		}
-		if (wybraneRadio != 0) dajInfoRadio('radio='+wybraneRadio);
+		if (wybraneRadio != 0) dajInfoRadio('radio='+wybraneRadio,true);
 		
 	}
 
-
+function preparujWpis(wpis_wiadomosc){
+	var infoOut  = '';
+	//RMF Classic: Daniel Bloom - Tulipany [playing] #2/24 0:00/0:00 (0%) volume: 0% repeat: off random: off single: off consume: off
+	var arr = wpis_wiadomosc.split('#');
+	if (arr[0]) infoOut = '<span>'+arr[0]+'</span>';
+	//console.log(arr);
+	if (arr[1]){
+		var ar = arr[1].split('volume: ');
+		var v = ar[1].slice(0,3);
+		infoOut += ' &nbsp; <span>'+v+'</span>';
+		//console.log(v);
+		//console.log(ar,v);
+	}
+	return infoOut;
+}
 	// AJAX main AJAX main AJAX main AJAX main AJAX main
+	var wpis_wiadomosc='';
 	function dajInfoRadio(param,opisz){
 		
 		document.getElementById('debug').innerHTML=param;
@@ -285,10 +301,12 @@ var wybraneRadio=0;
 				//console.log(r.responseText);
 				document.getElementById('debug').innerHTML = r.responseText;
 				var info = (JSON.parse(r.responseText));
-				//console.log(info);
-				var wpis='';
-				if (info.wiadomosc && opisz==true) wpis += info.wiadomosc; //undefined
-				document.getElementById('info').innerHTML = wpis;// +' '+ screen.width+'x'+screen.height;
+				if (info.wiadomosc) {
+					wpis_wiadomosc = info.wiadomosc; //undefined
+					wpis_wiadomosc = preparujWpis(wpis_wiadomosc);
+					//console.log(wpis_wiadomosc);
+					document.getElementById('info_wiadomosc').innerHTML = wpis_wiadomosc;// +' '+ screen.width+'x'+screen.height;
+				}
 			};
 			r.send();
 		}
@@ -316,7 +334,7 @@ var wybraneRadio=0;
 	function radioOn(){
 		dataRadio = this.dataset.radio;	
 		var intRadio = parseInt(dataRadio);
-		document.getElementById('info').innerHTML = '';
+		document.getElementById('info_wiadomosc').innerHTML = '';
 		dajInfoRadio('radio='+dataRadio,false);
 		setTimeout(function(){dajInfoRadio('info=radio',true);},8000);
 		
@@ -440,6 +458,16 @@ function ustawVol(ten){
 	//document.getElementById("VolSlider").stepDown(10);
 	//document.getElementById("VolSlider").stepUp(10);
 }
+function ustawVolDown(ten){
+	ten = 	document.getElementById("VolSlider");
+	ten.stepDown(2);
+	ustawVol(ten);
+}
+function ustawVolUp(ten){
+	ten = 	document.getElementById("VolSlider");
+	ten.stepUp(2);
+	ustawVol(ten);
+}
 </script>
 </head>
 
@@ -448,16 +476,17 @@ function ustawVol(ten){
 	<h3 style="float:left;"><span style="font-family:Georgia;" id="wybranyKomputer">iR</span> PiRadio :: <span id="wybrane"></span></h3>
 
 	<div style="clear:both; width:100%;">
-		<button class="klaw admin vol glos" onClick="document.getElementById('VolSlider').stepDown(1);dajInfoRadio('radio=v-10')"><</button>
-		<button class="klaw admin vol glos" onClick="document.getElementById('VolSlider').stepUp(1);dajInfoRadio('radio=v+10')">></button>
+		<button class="klaw admin vol glos" onClick="ustawVolDown();"><</button>
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=0')"><b>Start</b></button>
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v0')"><b>Stop</b></button>
-
+		<button class="klaw admin vol glos" onClick="ustawVolUp();">></button>
+<!--
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v15')">15%</button>
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v25')">25%</button>
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v50')">50%</button>
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v75')">75%</button>
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v90')">90%</button>
+	-->
 	</div>
 	
 	<div style="clear:both; width:100%;">
@@ -495,7 +524,7 @@ function ustawVol(ten){
 		<button data-bash="shutdown -P now" class="bash admin">Power off</button>
 	</div>
 -->
-	<div id="info"></div>
+	<div id="info_wiadomosc"></div>
 	
 	<div class="div_klawiszy">
 		<button class="klaw admin" onClick="mpcUpdate()">MPC update</button>
