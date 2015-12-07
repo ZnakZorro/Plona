@@ -12,7 +12,7 @@ border: 1px solid transparent;
   text-decoration: none;
   text-transform: uppercase;
   transform-style: flat;
-  transition: all 250ms ease-out;
+  transition: all 450ms ease-out;
 }
 
 button:before, button:after {
@@ -20,21 +20,18 @@ button:before, button:after {
   position: absolute;
   z-index: -2;
   transition: all 250ms ease-out;
-
   bottom: 15px;
-  width: 50%;
+  width: 75%;
   height: 20%;
-  max-width: 300px;
-  max-height: 100px;
   box-shadow: 0 15px 12px rgba(31, 31, 31, 0.7);
 }
 button:before {
   left: 10px;
-  transform: rotate(-3deg);
+  transform: rotate(-4deg);
 }
 button:after {
   right: 10px;
-  transform: rotate(3deg);
+  transform: rotate(4deg);
 }
 button:hover {
   border-color: #ccc;

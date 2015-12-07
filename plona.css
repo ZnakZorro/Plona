@@ -1,50 +1,45 @@
-
-/*
-h3 span{color:#ddd;}
-#info_wiadomosc {margin:0.3rem 0; padding:0.3rem 1rem; min-height:1.5rem; border:1px solid #000; background-color:#222;} 
-.div_klawiszy {margin-top:1rem;}
-#mpc_update	{margin:1em 2em; padding:1em;background:white; color:black;font-family: monospace;font-size: 12px;}
-#config_input {width:15.5em;}
-input {font-size:1.2em; padding:4px;margin:4px;}
-div.configs, div#klawisze {clear:both;display:block; margin-bottom:0.5em;}
-button.vol {background:#123; float:left; height:2.3rem;}	
-button.glos {font-size:1.5em; padding:0 1rem;}	
-
-*/
-h3 {font-size:1.5em;}
-#info_wiadomosc {margin:0.3rem 0; padding:0.3rem 1rem; min-height:2.0rem; border:1px solid white;} 
-.div_klawiszy {margin-top:1rem;}
-#mpc_update	{margin:1em 2em; padding:1em;font-family: monospace;font-size: 12px;}
-#config_input {width:15.5em;}
-input {font-size:1.2em; padding:4px;margin:8px;}
-div.configs, div#klawisze {clear:both;display:block; margin-bottom:0.5em;}
-p.note {margin-bottom:-0.4em;}
-
+*, *:before, *:after {
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+	
 body{
- 	font-size:15px;
+	font-size:15px;
 	font-family:verdana,sans-serif; 
 	margin:0.5rem;
 }
 
+h3 {font-size:1.5em; font-weight:normal;}
+.pole {width:100%; clear:both; margin:1px solid white;}
+.div_klawiszy {margin-top:1rem;}
+#wybrane {font-weight:bold;}
+#info_wiadomosc {margin:0.3rem 0; padding:0.3rem 1rem; min-height:2.0rem; border:1px solid white;} 
+#mpc_update	{margin:1em 2em; padding:1em;font-family: monospace;font-size: 0.8em;}
+#config_input {width:15.5em;}
+#devices {min-width:99%;}
+input {font-size:1.2em; padding:4px;margin:8px;}
+div.configs, div#klawisze {clear:both;display:block; margin-bottom:0.5em;}
+p.note {margin-bottom:-0.4em;}
+#VolSlider {width:99%; clear:both; margin:1em 0 2em 0;}
+
 button {
-	min-width: 40px;
+ 	font-size:1em;
+	line-height:1.5em;
+	height:3.0em;
+	min-width: 4em;
+	width:23%;
 	display: inline-block;
 	position: relative;
-	margin: 10px;
-	padding: 8px;
+	margin: 1%;
+	padding: 0.5%;
 }
-
-
+button.vol {font-size:1.33em; font-weight:bold; color:#666; height:2.5em;padding: 0;}
+button.admin {width:18%; color:#666;}
 button.right{float:right; margin-right:2em;}
 button.mini{width:2.2em; }
 
 
-
-
-
-
-
-#VolSlider {width:100%; clear:both; margin:1em 0 2em 0;}
 
 input[type=range] {
   -webkit-appearance: none;
@@ -56,11 +51,11 @@ input[type=range]:focus {
   outline: none;
 }
 input[type=range]::-webkit-slider-runnable-track {
-  
   height: 8.4px;
   cursor: pointer;
   animate: 0.2s;
   background: #888;
+  
   /*
   background: #69b;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -92,34 +87,34 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 
 
-
+@media screen and (min-width: 1199px) {
+	body {font-size:17px;}
+	h3 {font-size:1.7em;}
+	button {width: 18%; line-height: 2.5em;    height: 3.5em;}
+}
 
 
 @media screen and (max-width: 800px) {
 	h3 {font-size:1.3em;}
 	#info_wiadomosc {min-height:2.25rem;}
-	button {width: 6rem;}
-	button,button.admin {max-width:initial; min-width:initial; width: 153px; height:36px; margin:6px 8px; padding:0 2px;}
-	button.admin {max-width:initial; min-width:initial; width: initial;}
-	button.vol {width:4.5rem;}
-	
+	button {width:22%;	margin: 1.5%;padding: 0.75%;}
+	button.admin {width:20%;}
+}
+
+@media screen and (max-width: 680px) {
+	button {width: 30%;}
+	button.admin{width: 30%;}
+
 }
 
 @media screen and (max-width: 570px) {
-	h3 {font-size:1.3em;}
-	#info_wiadomosc {min-height:2.25rem;}
-	button {width: 6rem;}
-	button,button.admin {max-width:initial; min-width:initial; width: 153px; height:36px; margin:6px 8px; padding:0 2px;}
-	button.admin {max-width:initial; min-width:initial; width: initial;}
-	button.vol {width:4.5rem;}
+	button {width: 46%;	margin: 2%;}
+	button.admin{width: 45%;}
 	
 }		
-@media screen and (max-width: 390px) {
-	h3 {font-size:1.1em;}
-	#info_wiadomosc {min-height:3.25rem;}
-	button,button.admin {max-width:initial; min-width:initial; width: 133px; height:36px; margin:6px 8px; padding:0 2px;}
-	button.admin {max-width:initial; min-width:initial; width: initial;}
-	button.right{margin-right:0.5em;}
-	button.vol {width:3.5rem;}
+@media screen and (max-width: 360px) {
+	button {width: 96%;}
+	button.admin{width: 96%;}
 
 }   
+

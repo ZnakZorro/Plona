@@ -176,6 +176,8 @@ var wybraneRadio=0;
 			var vol=25;
 			document.getElementById("VolSlider").value=vol;
 			document.getElementById("VolVal").innerHTML=vol;
+			window.addEventListener("resize", function(){ekraninfo()}, true);
+			ekraninfo();
 	}	// Dom ready
 	
 
@@ -299,7 +301,7 @@ function ustawDevices(){
 		config[d]['class']=klasa;
 		devices.insertAdjacentHTML('beforeend','<button class="admin '+klasa+'" onClick=wybierzDev("'+d+'")>'+config[d]['title']+'</button>');
 	}
-	//document.getElementById('wybranyKomputer').innerHTML = config[wybranyKomputer]['title'];
+	document.getElementById('wybranyKomputer').innerHTML = config[wybranyKomputer]['title'];
 }
 
 function mpcUpdate(){
@@ -356,9 +358,9 @@ function showConfigUpdate(){
 			newDiv.id = id;
 			newDiv.className="configs";
 			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'title"    value="'+conf.title+'"    title="nazwa"    style="width:6em;" />');
-			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'protokol" value="'+conf.protokol+'" title="protokol" style="width:3em;" />');
-			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'ip"       value="'+conf.ip+'"       title="ip"       style="width:8em;" />');
-			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'port"     value="'+conf.port+'"     title="port"     style="width:3em;" />');
+			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'protokol" value="'+conf.protokol+'" title="protokol" style="width:3.5em;" />');
+			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'ip"       value="'+conf.ip+'"       title="ip"       style="width:9em;" />');
+			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'port"     value="'+conf.port+'"     title="port"     style="width:3.5em;" />');
 		config_update.appendChild(newDiv);
 	}
 	var conf = config[0];
@@ -378,6 +380,8 @@ function ustawVol(ten){
 	var vol = Math.round(ten.value);
 	dajInfoRadio('radio=v'+vol);
 	document.getElementById("VolVal").innerHTML=vol;
+	document.getElementById("glosnosc").innerHTML=vol;
+	
 }
 function ustawVolDown(ten){
 	ten = 	document.getElementById("VolSlider");
@@ -389,12 +393,24 @@ function ustawVolUp(ten){
 	ten.stepUp(2);
 	ustawVol(ten);
 }
+
+
+function ekraninfo(){
+	var ew = screen.width;
+	var eh = screen.height;
+	var ww = window.innerWidth;
+	var wh = window.innerHeight;	
+	console.log(ew,eh,ww,wh);
+	var inf = document.getElementById('ekraninfo');
+	inf.innerHTML = 'W='+ww+' H='+wh;
+}
+
 </script>
 </head>
 
-<body onload="onLoad()">
+<body onload="onLoad();" >
 
-	<h3 style="float:left;"><span id="wybranyKomputer">iR</span> PiR::<span id="wybrane"></span></h3>
+	<h3 style="float:left;"><span id="wybranyKomputer">Internet</span> [<span id="glosnosc"></span>%] <span id="wybrane">Radio</span></h3>
 
 	<div style="clear:both; width:100%;">
 		<button class="klaw admin vol glos" onClick="ustawVolDown();"><</button>
@@ -429,7 +445,11 @@ function ustawVolUp(ten){
 <br />
 	<div style="float:right;" id="devices"></div>
 <br />
-<div id="debug"></div>
+<div class="pole" id="debug"></div>
+<div class="pole" id="ekraninfo"></div>
 <br /><br /><br /><br /><br />
+
+
+
 </body>
 </html>
