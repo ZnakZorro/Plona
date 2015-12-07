@@ -34,7 +34,7 @@ button {
 	margin: 1%;
 	padding: 0.5%;
 }
-button.vol {font-size:1.33em; font-weight:bold; color:#666; height:2.5em;padding: 0;}
+button.vol {height:2.5em;padding: 0;}
 button.admin {width:18%; color:#666;}
 button.right{float:right; margin-right:2em;}
 button.mini{width:2.2em; }
@@ -104,17 +104,20 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 @media screen and (max-width: 680px) {
 	button {width: 30%;}
 	button.admin{width: 30%;}
+	button.vol{width: 21%;}
 
 }
 
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 526px) {
 	button {width: 46%;	margin: 2%;}
 	button.admin{width: 45%;}
+	button.vol{width: 19%;}
 	
 }		
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 319px) {
 	button {width: 96%;}
 	button.admin{width: 96%;}
+	button.vol{width: 46%;}
 
 }   
 
