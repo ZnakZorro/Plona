@@ -208,13 +208,10 @@ function preparujWpis(wpis_wiadomosc){
 	//RMF Classic: Daniel Bloom - Tulipany [playing] #2/24 0:00/0:00 (0%) volume: 0% repeat: off random: off single: off consume: off
 	var arr = wpis_wiadomosc.split('#');
 	if (arr[0]) infoOut = '<span>'+arr[0]+'</span>';
-	//console.log(arr);
 	if (arr[1]){
 		var ar = arr[1].split('volume: ');
 		var v = ar[1].slice(0,3);
 		infoOut += ' &nbsp; <span>'+v+'</span>';
-		//console.log(v);
-		//console.log(ar,v);
 	}
 	return infoOut;
 }
@@ -232,13 +229,11 @@ function preparujWpis(wpis_wiadomosc){
 			r.onreadystatechange = function () {
 			document.getElementById('debug').innerHTML = r.status;
 			if (r.readyState != 4 || r.status != 200) return;
-				//console.log(r.responseText);
 				document.getElementById('debug').innerHTML = r.responseText;
 				var info = (JSON.parse(r.responseText));
 				if (info.wiadomosc) {
 					wpis_wiadomosc = info.wiadomosc; //undefined
 					wpis_wiadomosc = preparujWpis(wpis_wiadomosc);
-					//console.log(wpis_wiadomosc);
 					document.getElementById('info_wiadomosc').innerHTML = wpis_wiadomosc;// +' '+ screen.width+'x'+screen.height;
 				}
 			};
@@ -282,7 +277,7 @@ function preparujWpis(wpis_wiadomosc){
 	function sendBashCommand(ten){
 		var bash = ten.dataset.bash;
 		bash = encodeURIComponent(bash);
-		console.log(bash);
+		//console.log(bash);
 		dajInfoRadio('bash='+bash,false);
 	}
 
@@ -298,7 +293,6 @@ function ustawDevices(){
 	var iled = config.length;
 	var devices = document.getElementById('devices');
 	devices.innerHTML='';
-//console.log(config);
 	for (var d in config){
 		var klasa='';
 		if (d==wybranyKomputer) klasa ='active';
@@ -352,7 +346,6 @@ function zapiszConfig(){
 
 
 function showConfigUpdate(){
-console.log(config);
 	var config_update = document.getElementById('config_update');	
 	config_update.innerHTML='';
 	config_update.style.display='block';
@@ -382,16 +375,9 @@ function resetConfig(){
 
 
 function ustawVol(ten){
-	//ten = 	document.getElementById("VolSlider").innerHTML=vol;
 	var vol = Math.round(ten.value);
-	//console.log(vol);
 	dajInfoRadio('radio=v'+vol);
 	document.getElementById("VolVal").innerHTML=vol;
-	//var VolSlider = document.getElementById("VolSlider");
-	//var x = document.getElementById("VolSlider").value;
-	//console.log(ten.value,VolSlider.value,x)
-	//document.getElementById("VolSlider").stepDown(10);
-	//document.getElementById("VolSlider").stepUp(10);
 }
 function ustawVolDown(ten){
 	ten = 	document.getElementById("VolSlider");
@@ -415,13 +401,7 @@ function ustawVolUp(ten){
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=0')"><b>Start</b></button>
 		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v0')"><b>Stop</b></button>
 		<button class="klaw admin vol glos" onClick="ustawVolUp();">></button>
-<!--
-		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v15')">15%</button>
-		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v25')">25%</button>
-		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v50')">50%</button>
-		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v75')">75%</button>
-		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v90')">90%</button>
-	-->
+
 	</div>
 	
 	<div style="clear:both; width:100%;">
@@ -429,36 +409,15 @@ function ustawVolUp(ten){
 		<input id="VolSlider" type="range" min="0" max="100" step="2.5" defaultValue="25" onChange="ustawVol(this)" />
 	</div>
 	<div id="klawisze"></div>
-<!--	
-	<div class="div_klawiszy">
-		<button data-radio="999"  id="klawiszON"  class="plus">Włącz radio ON</button>
-		<button data-radio="-1"   id="klawiszOFF" class="plus">Wyłącz radio OFF</button>
-	</div>
-	<div class="div_klawiszy">
-		<button data-volume="+10"  id="volumeplus"  class="plus">V+10</button>
-		<button data-volume="50"   id="volumehalf"  class="plus">V 50</button>
-		<button data-volume="-10"  id="volumeminus" class="plus">V-10</button>
-	</div>
 	
-	<div class="div_klawiszy">
 
-		<button data-bash="mpc volume 25" class="bash admin">25%</button>
-		<button data-bash="mpc volume 50" class="bash admin">50%</button>
-		<button data-bash="mpc volume 75" class="bash admin">75%</button>
-		<button data-bash="mpc volume 90" class="bash admin">90%</button>
-		<button data-bash="mpc volume -10" class="bash admin">Ciszej</button>
-		<button data-bash="mpc volume +10"  class="bash admin">Głośniej</button>
-		<button data-bash="mpc stop" class="bash admin">Stop</button>
-		<button data-bash="mpc play" class="bash admin">Play</button>
-		
-	</div>
-		<div class="div_klawiszy">
+	<div class="div_klawiszy">
 		
 		<button data-bash="shutdown now"  class="bash admin">Shutdown</button>
 		<button data-bash="shutdown -r now" class="bash admin">Reboot</button>
 		<button data-bash="shutdown -P now" class="bash admin">Power off</button>
 	</div>
--->
+
 	<div id="info_wiadomosc"></div>
 	
 	<div class="div_klawiszy">
