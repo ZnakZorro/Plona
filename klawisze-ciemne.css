@@ -1,10 +1,26 @@
+body {font-size:15px;font-family:verdana; margin:0.5rem; background-color:#00080f; color:#f8f8f8;}
+
+h3 span{color:#ddd;}
+
+#info_wiadomosc {margin:0.3rem 0; padding:0.3rem 1rem; min-height:1.5rem; border:1px solid #000; background-color:#222;} 
+.div_klawiszy {margin-top:1rem;}
+#mpc_update	{margin:1em 2em; padding:1em;background:white; color:black;font-family: monospace;font-size: 12px;}
+#config_input {width:15.5em;}
+input {font-size:1.2em; padding:4px;margin:4px;}
+div.configs, div#klawisze {clear:both;display:block; margin-bottom:0.5em;}
+button.vol {background:#123; float:left; height:2.3rem;}	
+button.glos {font-size:1.5em; padding:0 1rem;}	
+#VolSlider {width:99%; clear:both; margin:0.5em 0 1em 0;}
+
+button.admin{background: #666;}
+.active {color:#fc6;}	
 button {
     color: #eee;
     overflow: hidden;
     display: inline-block;
     position: relative;
     margin: 10px;
-    padding: 2px 4px;
+    padding: 2px 6px;
     text-align: center;
     text-decoration: none;
     /* text-shadow: 1px 1px 1px #6D6D6D; */
@@ -21,7 +37,7 @@ button:hover {
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333), color-stop(100%,#666));
 	}
 
-.active {color:#fc6;}	
+	
 button:active {
     color: #fc6;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#474747), color-stop(100%,#A9A9A9));
@@ -36,6 +52,3 @@ button:visited {
 	color:black;
 	}
 
-button.right{float:right; margin-right:2em;}
-button.mini{width:2.2em; padding:0;}
-button.admin{background: #666;}

@@ -1,0 +1,125 @@
+
+/*
+h3 span{color:#ddd;}
+#info_wiadomosc {margin:0.3rem 0; padding:0.3rem 1rem; min-height:1.5rem; border:1px solid #000; background-color:#222;} 
+.div_klawiszy {margin-top:1rem;}
+#mpc_update	{margin:1em 2em; padding:1em;background:white; color:black;font-family: monospace;font-size: 12px;}
+#config_input {width:15.5em;}
+input {font-size:1.2em; padding:4px;margin:4px;}
+div.configs, div#klawisze {clear:both;display:block; margin-bottom:0.5em;}
+button.vol {background:#123; float:left; height:2.3rem;}	
+button.glos {font-size:1.5em; padding:0 1rem;}	
+
+*/
+h3 {font-size:1.5em;}
+#info_wiadomosc {margin:0.3rem 0; padding:0.3rem 1rem; min-height:2.0rem; border:1px solid white;} 
+.div_klawiszy {margin-top:1rem;}
+#mpc_update	{margin:1em 2em; padding:1em;font-family: monospace;font-size: 12px;}
+#config_input {width:15.5em;}
+input {font-size:1.2em; padding:4px;margin:8px;}
+div.configs, div#klawisze {clear:both;display:block; margin-bottom:0.5em;}
+p.note {margin-bottom:-0.4em;}
+
+body{
+ 	font-size:15px;
+	font-family:verdana,sans-serif; 
+	margin:0.5rem;
+}
+
+button {
+	min-width: 40px;
+	display: inline-block;
+	position: relative;
+	margin: 10px;
+	padding: 8px;
+}
+
+
+button.right{float:right; margin-right:2em;}
+button.mini{width:2.2em; }
+
+
+
+
+
+
+
+#VolSlider {width:100%; clear:both; margin:1em 0 2em 0;}
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 99%;
+  /*background: #444;*/
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #888;
+  /*
+  background: #69b;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+  */
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 40px;
+  width: 20px;
+  margin-top: -16px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  border-radius: 3px;
+	
+/*	
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+    background: #369;
+ */ 
+
+  background: #444;
+
+  
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  /*background: #036;*/
+}
+
+
+
+
+
+
+@media screen and (max-width: 800px) {
+	h3 {font-size:1.3em;}
+	#info_wiadomosc {min-height:2.25rem;}
+	button {width: 6rem;}
+	button,button.admin {max-width:initial; min-width:initial; width: 153px; height:36px; margin:6px 8px; padding:0 2px;}
+	button.admin {max-width:initial; min-width:initial; width: initial;}
+	button.vol {width:4.5rem;}
+	
+}
+
+@media screen and (max-width: 570px) {
+	h3 {font-size:1.3em;}
+	#info_wiadomosc {min-height:2.25rem;}
+	button {width: 6rem;}
+	button,button.admin {max-width:initial; min-width:initial; width: 153px; height:36px; margin:6px 8px; padding:0 2px;}
+	button.admin {max-width:initial; min-width:initial; width: initial;}
+	button.vol {width:4.5rem;}
+	
+}		
+@media screen and (max-width: 390px) {
+	h3 {font-size:1.1em;}
+	#info_wiadomosc {min-height:3.25rem;}
+	button,button.admin {max-width:initial; min-width:initial; width: 133px; height:36px; margin:6px 8px; padding:0 2px;}
+	button.admin {max-width:initial; min-width:initial; width: initial;}
+	button.right{margin-right:0.5em;}
+	button.vol {width:3.5rem;}
+
+}   

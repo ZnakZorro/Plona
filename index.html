@@ -5,78 +5,12 @@
 <title>Plona</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAD/AAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAAAAAAAAAAAAP0AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA8QAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADvAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAPMAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAnwAAAP8AAAC/AAAAAAAAAP8AAAB/AAAAtwAAAP8AAAD/AAAAnwAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAJ8AAAD/AAAAvwAAAAAAAAD/AAAAwwAAAIsAAAD/AAAA1wAAAEsAAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAL8AAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAnwAAAP8AAAC/AAAAAAAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAJ8AAAD/AAAAvwAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAP8AAAAAAAAAAAAAAAAAAACfAAAA/wAAAO8AAAAAAAAA/wAAAPMAAACfAAAAnwAAAP8AAACfAAAA/wAAAPMAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAALEAAAAAAAAA4wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAKEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAz/MAAM/zAAAAAAAAAAAAADi+AAA4oAAAOIIAADi+AAA4gAAAOL4AADiAAAAAAAAAgAEAAP//AAD//wAA//8AAA==" />
-<link rel="stylesheet" href="klawisze-ciemne.css">
+<!--link rel="stylesheet" href="klawisze-ciemne.css"-->
+<link rel="stylesheet" href="plona.css">
+<link rel="stylesheet" href="klawisze-papier.css">
+
 <style>
-body {font-size:15px;font-family:verdana; margin:0.5rem; background-color:#00080f; color:#f8f8f8;}
-h3 span{color:#ddd;}
-#info_wiadomosc {margin:0.3rem 0; padding:0.3rem 1rem; min-height:1.5rem; border:1px solid #000; background-color:#222;} 
-.div_klawiszy {margin-top:1rem;}
-#mpc_update	{margin:1em 2em; padding:1em;background:white; color:black;font-family: monospace;font-size: 12px;}
-#config_input {width:15.5em;}
-input {font-size:1.2em; padding:4px;margin:4px;}
-div.configs, div#klawisze {clear:both;display:block;}
-button.vol {background:#123; float:left; height:2.3rem;}	
-button.glos {font-size:1.5em; padding:0 1rem;}	
-#VolSlider {width:99%; clear:both; margin:0.5em 0 1em 0;}
 
-
-input[type=range] {
-  -webkit-appearance: none;
-  margin: 18px 0;
-  width: 99%;
-  background: #444;
-}
-input[type=range]:focus {
-  outline: none;
-}
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 8.4px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #69b;
-  border-radius: 1.3px;
-  border: 0.2px solid #010101;
-}
-input[type=range]::-webkit-slider-thumb {
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #000000;
-  height: 36px;
-  width: 18px;
-  border-radius: 3px;
-  background: #369;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -14px;
-}
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #036;
-}
-
-
-
-
-
-
-
-
-@media screen and (max-width: 570px) {
-	#info_wiadomosc {min-height:2.25rem;}
-	button {width: 6rem;}
-	button,button.admin {max-width:initial; min-width:initial; width: 153px; height:36px; margin:6px 8px; padding:0 2px;}
-	button.admin {max-width:initial; min-width:initial; width: initial;}
-	button.vol {width:4.5rem;}
-	
-}		
-@media screen and (max-width: 390px) {
-	#info_wiadomosc {min-height:3.25rem;}
-	button,button.admin {max-width:initial; min-width:initial; width: 133px; height:36px; margin:6px 8px; padding:0 2px;}
-	button.admin {max-width:initial; min-width:initial; width: initial;}
-	button.right{margin-right:0.5em;}
-	button.vol {width:3.5rem;}
-
-}   
 </style>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script>
@@ -412,11 +346,12 @@ function zapiszConfig(){
 		}	
 	}
 	var zapisTXT = JSON.stringify(config);
-	localStorage.setItem("___radio___config", zapisTXT);	
+	localStorage.setItem("___radio___config", zapisTXT);
+	setTimeout(function(){document.getElementById("config_update").style.display="none";},500);
 }
 
 
-function configUpdate(){
+function showConfigUpdate(){
 console.log(config);
 	var config_update = document.getElementById('config_update');	
 	config_update.innerHTML='';
@@ -437,7 +372,7 @@ console.log(config);
 	config_update.insertAdjacentHTML('beforeend',"<button onClick='zapiszConfig()'>Zapisz config</button>");
 	config_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick=\'document.getElementById("config_update").style.display="none";\'>X</button>');
 	config_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick="resetConfig()">()</button>');
-	document.getElementById('config_update').style.display='none';
+	//document.getElementById('config_update').style.display='none';
 }	
 
 function resetConfig(){
@@ -473,7 +408,7 @@ function ustawVolUp(ten){
 
 <body onload="onLoad()">
 
-	<h3 style="float:left;"><span style="font-family:Georgia;" id="wybranyKomputer">iR</span> PiRadio :: <span id="wybrane"></span></h3>
+	<h3 style="float:left;"><span id="wybranyKomputer">iR</span> PiR::<span id="wybrane"></span></h3>
 
 	<div style="clear:both; width:100%;">
 		<button class="klaw admin vol glos" onClick="ustawVolDown();"><</button>
@@ -528,7 +463,7 @@ function ustawVolUp(ten){
 	
 	<div class="div_klawiszy">
 		<button class="klaw admin" onClick="mpcUpdate()">MPC update</button>
-		<button class="klaw admin" onClick="configUpdate()">Config</button>
+		<button class="klaw admin" onClick="showConfigUpdate()">Config</button>
 		<div id="config_update" style="display:none;"></div>
 		<div id="mpc_update" style="display:none;"></div>
 	</div>
@@ -536,6 +471,6 @@ function ustawVolUp(ten){
 	<div style="float:right;" id="devices"></div>
 <br />
 <div id="debug"></div>
-<br />
+<br /><br /><br /><br /><br />
 </body>
 </html>

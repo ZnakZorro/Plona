@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/* Base page styles */
+body {
+	background-color: #f1f1f1;
+}
+/* Base Button Style */
+button {
+border: 1px solid transparent;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transform-style: flat;
+  transition: all 250ms ease-out;
+}
+
+button:before, button:after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  transition: all 250ms ease-out;
+
+  bottom: 15px;
+  width: 50%;
+  height: 20%;
+  max-width: 300px;
+  max-height: 100px;
+  box-shadow: 0 15px 12px rgba(31, 31, 31, 0.7);
+}
+button:before {
+  left: 10px;
+  transform: rotate(-3deg);
+}
+button:after {
+  right: 10px;
+  transform: rotate(3deg);
+}
+button:hover {
+  border-color: #ccc;
+}
+button:hover:before, button:hover:after {
+  transition: box-shadow 600ms ease-out, left 200ms, right 200ms;
+  box-shadow: 0 8px 8px rgba(31, 31, 31, 0.5);
+}
+button:hover:before {
+  left: 5px;
+}
+button:hover:after {
+  right: 5px;
+}
+.active {background:#d8d8d8; color:#004;}	

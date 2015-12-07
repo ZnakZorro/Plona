@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+    <title>CodePen - 3D Paper button effects</title>
+<style>
+@charset "UTF-8";
+/* Base page styles */
+body {
+  font-family: sans-serif;
+  background-color: #f1f1f1;
+}
+
+
+
+/* Base Button Style */
+.btn {
+  position: relative;
+  display: block;
+  width: 250px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transform-style: flat;
+  transition: all 250ms ease-out;
+}
+.btn:before, .btn:after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  transition: all 250ms ease-out;
+}
+
+/* Flatten effect – flattens sides on hover */
+.paper-flatten {
+  border: 1px solid transparent;
+}
+.paper-flatten:before, .paper-flatten:after {
+  bottom: 15px;
+  width: 50%;
+  height: 20%;
+  max-width: 300px;
+  max-height: 100px;
+  box-shadow: 0 15px 12px rgba(31, 31, 31, 0.7);
+}
+.paper-flatten:before {
+  left: 10px;
+  transform: rotate(-3deg);
+}
+.paper-flatten:after {
+  right: 10px;
+  transform: rotate(3deg);
+}
+.paper-flatten:hover {
+  border-color: #ccc;
+}
+.paper-flatten:hover:before, .paper-flatten:hover:after {
+  transition: box-shadow 600ms ease-out, left 200ms, right 200ms;
+  box-shadow: 0 8px 8px rgba(31, 31, 31, 0.5);
+}
+.paper-flatten:hover:before {
+  left: 5px;
+}
+.paper-flatten:hover:after {
+  right: 5px;
+}
+
+
+    </style>
+
+    <script>
+  window.console = window.console || function(t) {};
+</script>
+  </head>
+
+  <body>
+
+  
+
+<a href="" class="btn paper-flatten">Try Me</a>
+<button class="btn paper-flatten">Try Me</button>
+<button class="btn paper-flatten">Try Me</button>
+<button class="btn paper-flatten">Try Me</button>
+<button class="btn paper-flatten">Try Me</button>
+<a href="" class="btn paper-flatten">Try Me</a>
+    
+  </body>
+</html>
+ 
